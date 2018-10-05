@@ -1,0 +1,65 @@
+unit NewOrderCustomer;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls;
+
+type
+  TNewOrderCustomerForm = class(TForm)
+    CustomerSearchEdit: TEdit;
+    CustomerSearchBtn: TButton;
+    DBCustomerSearchBox: TDBLookupComboBox;
+    NewOrderBtn: TButton;
+    CustomerSearch: TLabel;
+    procedure CustomerSearchBtnClick(Sender: TObject);
+    procedure NewOrderBtnClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  NewOrderCustomerForm: TNewOrderCustomerForm;
+
+implementation
+
+{$R *.dfm}
+
+uses DMain, Home, NewOrderForm;
+
+procedure TNewOrderCustomerForm.CustomerSearchBtnClick(Sender: TObject);
+begin
+  with DMain.DataMain.CustomerSet do
+  begin
+    Close;
+    // query must be closed before changing parameter value
+    CommandText := 'SELECT * FROM Customers WHERE CompanyName Like "%' +
+      CustomerSearchEdit.text + '%"';
+    ShowMessage(CommandText);
+    // you can also refer to a parameter by its number if you prefer
+    open; // open (run) the query
+    ShowMessage('Query Done!');
+  end;
+end;
+
+procedure TNewOrderCustomerForm.FormCreate(Sender: TObject);
+begin
+  with DMain.DataMain.CustomerSet do
+  begin
+    Close;
+    CommandText := 'SELECT * from Customers';
+  end;
+end;
+
+procedure TNewOrderCustomerForm.NewOrderBtnClick(Sender: TObject);
+begin
+  NewOrderCustomerForm.Visible := False;
+  NewOrdersForm.Visible := True;
+end;
+
+end.

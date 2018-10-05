@@ -1,0 +1,38 @@
+object OpenOrdersForm: TOpenOrdersForm
+  Left = 0
+  Top = 0
+  Caption = 'OpenOrdersForm'
+  ClientHeight = 281
+  ClientWidth = 418
+  Color = clCream
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object OpenOrderLbl: TLabel
+    Left = 48
+    Top = 27
+    Width = 61
+    Height = 13
+    Caption = 'Open Order:'
+  end
+  object OpenOrdersEdit: TEdit
+    Left = 128
+    Top = 24
+    Width = 121
+    Height = 21
+    TabOrder = 0
+  end
+  object OpenOrdersBtn: TButton
+    Left = 152
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = 'Open Order'
+    TabOrder = 1
+  end
+end

@@ -1,0 +1,2 @@
+9.	The User must be able to view records of the “OrderDetails” table that they want to view from inside the program.
+12.	The Program must print out the details of the order and customer to a premade word document, or other form of displaying tables accompanied by other text, when asked by the user, so the user can print the delivery notes and labels for boxes. (Even better if the program could print it out automatically)

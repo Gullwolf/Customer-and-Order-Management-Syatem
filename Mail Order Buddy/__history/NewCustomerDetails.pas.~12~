@@ -1,0 +1,76 @@
+unit NewCustomerDetails;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TNewDetailsForm = class(TForm)
+    Homebtn: TButton;
+    CompanyNamelbl: TLabel;
+    CustomerNamelbl: TLabel;
+    CutomerAddresslbl: TLabel;
+    CustomerTelephonelbl: TLabel;
+    CustomerPostcodelbl: TLabel;
+    Label1: TLabel;
+    NewCustomerBtn: TButton;
+    NewCompanyEdit: TEdit;
+    NewCustomerEdit: TEdit;
+    NewAddress1Edit: TEdit;
+    NewAddress2Edit: TEdit;
+    NewAddress3Edit: TEdit;
+    NewPostcodeEdit: TEdit;
+    NewPhoneNumberEdit: TEdit;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure HomebtnClick(Sender: TObject);
+    procedure NewCustomerBtnClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  NewDetailsForm: TNewDetailsForm;
+
+implementation
+
+{$R *.dfm}
+
+uses Home, CustomerDataBase1, CustomerDetailsEditPage, NewOrderForm, DMain;
+
+procedure TNewDetailsForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  HomeForm.Close;
+  CustomerDataBaseForm.Close;
+  EditDetailsForm.Close;
+end;
+
+procedure TNewDetailsForm.HomebtnClick(Sender: TObject);
+begin
+  HomeForm.visible := True;
+  NewDetailsForm.Close;
+end;
+
+procedure TNewDetailsForm.NewCustomerBtnClick(Sender: TObject);
+begin
+  with DMain.DataMain.CustomerSet do
+  begin
+    Open;
+    Append;
+    FieldValues['CompanyName'] := NewCompanyEdit.Text;
+    FieldValues['ContactName'] := NewCustomerEdit.Text;
+    FieldValues['Address'] := NewAddress1Edit.Text;
+    FieldValues['City'] := NewAddress2Edit.Text;
+    FieldValues['Postcode'] := NewPostcodeEdit.Text;
+    FieldValues['County'] := NewAddress3Edit.Text;
+    FieldValues['Phone'] := NewPhoneNumberEdit.Text;
+    Post;
+  end;
+
+end;
+
+end.

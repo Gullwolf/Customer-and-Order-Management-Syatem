@@ -1,0 +1,60 @@
+begin
+  assignfile(htmlfile,'order.html');
+  writeln(htmlfile,'<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"');
+  writeln(htmlfile,'"http://www.w3.org/TR/html4/loose.dtd">' );
+  writeln(htmlfile,'<html> <head> <meta http-equiv="Content-Type"');
+  writeln(htmlfile,'content="text/html; charset=iso-8859-1">');
+  writeln(htmlfile,'<title>Sandwich Order</title> ');
+  writeln(htmlfile,'<style type="text/css">');
+  writeln(htmlfile,'.verdana {font-family: Verdana, Arial, Helvetica, sans-serif}');
+  writeln(htmlfile,'</style>');
+  writeln(htmlfile,' </head> <body class="verdana">');
+  writeln(htmlfile,'<h1 align="center">Mia''s Sandwich Shop - Sandwich Order </h1>');
+  writeln(htmlfile,'<p align="right">');
+  writeln(htmlfile,'Order No: '+vartostr(DMMia.DSetOrder['OrderID']));
+  writeln(htmlfile,'</p>');
+  writeln(htmlfile,'<p align="left">');
+  writeln(htmlfile,vartostr(DMMia.DSetOrder['Date']));
+  writeln(htmlfile,'</p>');
+  writeln(htmlfile,'<p align="center">');
+  writeln(htmlfile,vartostr(DMMia.DSetOrder['CompanyName']));
+  writeln(htmlfile,'</p>');
+  writeln(htmlfile,'<table align="center" border="1">');
+  writeln(htmlfile,'<tr>');
+  writeln(htmlfile,'<td width="120">');
+  writeln(htmlfile,'Sandwich Code');
+  writeln(htmlfile,'</td>');
+  writeln(htmlfile,'<td width="300">');
+  writeln(htmlfile,'Description');
+  writeln(htmlfile,'</td>');
+  writeln(htmlfile,'<td width="80">');
+  writeln(htmlfile,'Quantity');
+  writeln(htmlfile,'</td>');
+  writeln(htmlfile,'<td width="80">');
+  writeln(htmlfile,'Price');
+  writeln(htmlfile,'</td>');
+   writeln(htmlfile,'<td width="80">');
+  writeln(htmlfile,'Cost');
+  writeln(htmlfile,'</td>');
+  writeln(htmlfile,'</tr>');
+  with DMMia.DSetItem do
+     begin
+       First;
+       while not eof do
+       begin
+         writeln(htmlfile,'<tr>');
+         writeln(htmlfile,'<td align="right">'+vartostr(FieldValues['SandwichID'])+'</td>');
+         writeln(htmlfile,'<td>'+vartostr(FieldValues['Description'])+'</td>');
+         writeln(htmlfile,'<td align="right">'+vartostr(FieldValues['Quantity'])+'</td>');
+         writeln(htmlfile,'<td align="right">'+vartostr(FieldValues['Price'])+'</td>');
+         writeln(htmlfile,'<td align="right">'+vartostr(FieldValues['LineTotal'])+'</td>');
+         writeln(htmlfile,'<tr>');
+         Next;
+       end;
+     end;
+  writeln(htmlfile,'</table>');
+  writeln(htmlfile,'</body> </html>');
+  closefile(htmlfile);
+ // HTMLOrderfrm.WebBrowser.Navigate(widestring('file:///u:order.html'));//doesn't work
+ // HTMLOrderfrm.Show;
+end;

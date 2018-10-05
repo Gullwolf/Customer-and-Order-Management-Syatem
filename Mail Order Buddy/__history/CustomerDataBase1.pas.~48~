@@ -1,0 +1,74 @@
+unit CustomerDataBase1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask;
+
+type
+  TCustomerDataBaseForm = class(TForm)
+    Label1: TLabel;
+    CustomerSearchEdit: TEdit;
+    CustomerSearchbtn: TButton;
+    Homebtn: TButton;
+    EditCustomerbtn: TButton;
+    DContactNameChoice: TDBLookupComboBox;
+    procedure HomebtnClick(Sender: TObject);
+    procedure EditCustomerbtnClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure CustomerSearchbtnClick(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  CustomerDataBaseForm: TCustomerDataBaseForm;
+
+implementation
+
+{$R *.dfm}
+
+uses Home, CustomerDetailsEditPage, DMain, TestData;
+
+procedure TCustomerDataBaseForm.CustomerSearchbtnClick(Sender: TObject);
+var
+DataNeeded:String;
+
+begin
+with DMain.DataMain.CustomerSet do
+ begin
+ Close;
+ //query must be closed before changing parameter value
+ CommandText:='SELECT * FROM Customers WHERE ContactName Like "%'+CustomerSearchEdit.text+'%"';
+ ShowMessage(CommandText);
+ //you can also refer to a parameter by its number if you prefer
+ open; //open (run) the query
+ ShowMessage('Query Done!');
+ end;
+
+end;
+
+procedure TCustomerDataBaseForm.EditCustomerbtnClick(Sender: TObject);
+begin
+CustomerDataBaseForm.Visible:= False;
+EditDetailsForm.Visible:= True;
+end;
+
+procedure TCustomerDataBaseForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+HomeForm.Close;
+EditDetailsForm.Close;
+end;
+
+procedure TCustomerDataBaseForm.HomebtnClick(Sender: TObject);
+begin
+CustomerDataBaseForm.Visible:= False;
+HomeForm.Visible:= True;
+end;
+
+end.

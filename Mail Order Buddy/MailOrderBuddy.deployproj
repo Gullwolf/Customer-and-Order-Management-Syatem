@@ -1,0 +1,128 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Condition="Exists('$(BDS)\bin\CodeGear.Deployment.targets')" Project="$(BDS)\bin\CodeGear.Deployment.targets"/>
+    <ProjectExtensions>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <PropertyGroup/>
+    <ItemGroup Condition="'$(Platform)'=='Win32'">
+        <DeployFile Include="Win32\Debug\NewOrderForm.dcu" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>NewOrderForm.dcu</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\Home.dcu" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>Home.dcu</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\CustomerDetailsEditPage.dcu" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>CustomerDetailsEditPage.dcu</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\CustomerDataBase1.dcu" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>CustomerDataBase1.dcu</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\NewCustomerDetails.dcu" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>NewCustomerDetails.dcu</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Release\MailOrderBuddy.exe" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>MailOrderBuddy.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="DataBases\Customers2.mdb" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>Customers2.mdb</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\DMain.dcu" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>DMain.dcu</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\MailOrderBuddy.exe" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>MailOrderBuddy.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\NewOrderCustomer.dcu" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>NewOrderCustomer.dcu</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\TestData.dcu" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>TestData.dcu</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="DataBases\Customers2.mdb" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>Customers2.mdb</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\OpenOrderForm.dcu" Condition="'$(Config)'=='Release'">
+            <RemoteDir>MailOrderBuddy\</RemoteDir>
+            <RemoteName>OpenOrderForm.dcu</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+-Admin page and sign in
+-Hide all the tables and adding to the data base behind admin page.
+-Add the ablitiy to change an exsiting order, then rewrite the order form.
+-Make it work without the user having to have Microsoft Access installed. 
+-Make an installer that install the files needed as well.
+-Sort out the copyright and licences of release.
+-Free or priced.
+-Find a place to host the downloads from.
+-Find some testers.
+-Find some place to advertise; forums, comment sections, that website that Waquid mention(it is in your planner).
+-Sit back and watch to see how it is working in a wider world.

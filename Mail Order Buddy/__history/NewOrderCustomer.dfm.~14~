@@ -1,0 +1,66 @@
+object NewOrderCustomerForm: TNewOrderCustomerForm
+  Left = 0
+  Top = 0
+  Caption = 'NewOrderCustomerForm'
+  ClientHeight = 443
+  ClientWidth = 784
+  Color = clCream
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object CustomerSearch: TLabel
+    Left = 0
+    Top = 8
+    Width = 280
+    Height = 38
+    Alignment = taCenter
+    Caption = 'Customer Search '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -33
+    Font.Name = 'Arial Nova '
+    Font.Style = [fsBold, fsUnderline]
+    ParentFont = False
+  end
+  object CustomerSearchEdit: TEdit
+    Left = 48
+    Top = 112
+    Width = 121
+    Height = 21
+    TabOrder = 0
+    Text = 'CustomerSearchEdit'
+  end
+  object CustomerSearchBtn: TButton
+    Left = 64
+    Top = 176
+    Width = 75
+    Height = 25
+    Caption = 'Search'
+    TabOrder = 1
+    OnClick = CustomerSearchBtnClick
+  end
+  object DBCustomerSearchBox: TDBLookupComboBox
+    Left = 320
+    Top = 112
+    Width = 145
+    Height = 21
+    KeyField = 'CustomerID'
+    ListField = 'CompanyName'
+    ListSource = DataMain.CustomerSource
+    TabOrder = 2
+  end
+  object NewOrderBtn: TButton
+    Left = 360
+    Top = 176
+    Width = 75
+    Height = 25
+    Caption = 'Create Order'
+    TabOrder = 3
+    OnClick = NewOrderBtnClick
+  end
+end

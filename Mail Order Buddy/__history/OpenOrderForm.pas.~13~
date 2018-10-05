@@ -1,0 +1,43 @@
+unit OpenOrderForm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, ShellApi;
+
+type
+  TOpenOrdersForm = class(TForm)
+    OpenOrdersEdit: TEdit;
+    OpenOrdersBtn: TButton;
+    OpenOrderLbl: TLabel;
+    procedure OpenOrdersBtnClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  OpenOrdersForm: TOpenOrdersForm;
+  htmlfile: text;
+
+implementation
+
+{$R *.dfm}
+
+procedure TOpenOrdersForm.OpenOrdersBtnClick(Sender: TObject);
+var
+  FileInteger:string;
+
+begin
+  FileInteger:='F:\Computer Science\Win 32\Debug\Order '+(OpenOrdersEdit.Text)+'.html';
+
+
+  ShellExecute(Handle, 'open',
+    'C:\Program Files (x86)\Mozilla Firefox\firefox.exe',
+    PWideChar(FileInteger), nil, SW_SHOWNORMAL);
+end;
+
+end.

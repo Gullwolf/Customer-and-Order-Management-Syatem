@@ -1,0 +1,76 @@
+unit CustomerDetailsEditPage;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.UITypes, Vcl.Mask,
+  Vcl.DBCtrls;
+
+type
+  TEditDetailsForm = class(TForm)
+    Label1: TLabel;
+    CustomerNamelbl: TLabel;
+    CutomerAddresslbl: TLabel;
+    CustomerPostcodelbl: TLabel;
+    Homebtn: TButton;
+    CustomerTelephonelbl: TLabel;
+    DBCustomerNameEdit: TDBEdit;
+    DBCustomerAddressLine1Edit: TDBEdit;
+    DBCustomerAddressLine2Edit: TDBEdit;
+    DBCustomerAddressLine3Edit: TDBEdit;
+    DBCustomerPostcodeEdit: TDBEdit;
+    DBCustomerTelephoneEdit: TDBEdit;
+    CompanyNamelbl: TLabel;
+    DBCompanyNameEdit: TDBEdit;
+    UpdateBtn: TButton;
+    procedure HomebtnClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure UpdateBtnClick(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    CustomerSearchEdit: TEdit;
+  end;
+
+var
+  EditDetailsForm: TEditDetailsForm;
+
+implementation
+
+{$R *.dfm}
+
+uses Home, CustomerDataBase1, DMain;
+
+procedure TEditDetailsForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+HomeForm.Close;
+CustomerDataBaseForm.Close;
+end;
+
+procedure TEditDetailsForm.HomebtnClick(Sender: TObject);
+begin
+HomeForm.Visible:=True;
+EditDetailsForm.Close;
+end;
+
+
+procedure TEditDetailsForm.UpdateBtnClick(Sender: TObject);
+begin
+with DMain.DataMain.CustomerSet do
+ begin
+ Edit;
+ FieldValues['CompanyName']:= DBCompanyNameEdit.Text;
+ FieldValues['ContactName']:= DBCustomerNameEdit.Text;
+ FieldValues['Address']:= DBCustomerAddressLine1Edit.Text;
+ FieldValues['City']:= DBCustomerAddressLine2Edit.Text;
+ FieldValues['Postcode']:= DBCustomerPostcodeEdit.Text;
+ FieldValues['County']:= DBCustomerAddressLine3Edit.Text;
+ FieldValues['Phone']:= DBCustomerTelephoneEdit.Text;
+ Post; //save the new record
+ end;
+end;
+
+end.

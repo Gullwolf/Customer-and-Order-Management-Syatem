@@ -1,0 +1,82 @@
+unit TestData;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls;
+
+type
+  TTestdatatable = class(TForm)
+    CustomerGrid: TDBGrid;
+    OrdersGrid: TDBGrid;
+    OrderDetailsGrid: TDBGrid;
+    ProductsGrid: TDBGrid;
+    Button1: TButton;
+    SearchTablesEdit: TEdit;
+    SearchProductsBtn: TButton;
+    SearchOrdersBtn: TButton;
+    SearchOrderDetailBtn: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure SearchTablesEditChange(Sender: TObject);
+    procedure SearchOrderDetailBtnClick(Sender: TObject);
+    procedure SearchOrdersBtnClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Testdatatable: TTestdatatable;
+
+implementation
+
+{$R *.dfm}
+
+uses DMain, Home;
+
+procedure TTestdatatable.Button1Click(Sender: TObject);
+{ Closes the current form and makes the 'Main' form visible again so that the user can carry out a new task. }
+begin
+  with DMain.DataMain.OrderDetailsSet do
+    begin
+      Close;
+      CommandText:= 'SELECT * FROM OrderDetails WHERE OrderID';
+      Open;
+    end;
+  with DMain.DataMain.OrdersSet do
+    begin
+      Close;
+      CommandText:= 'SELECT * FROM Orders WHERE OrderID Like "%'+SearchTablesEdit.text+'%"';
+      Open;
+    end;
+Testdatatable.Close;
+{ Closes the 'Testdata' form as it is no longer needed. }
+HomeForm.Visible:=True;
+{ Shows the 'Main' form so the user can carry out their next task. }
+end;
+
+
+procedure TTestdatatable.SearchOrderDetailBtnClick(Sender: TObject);
+begin
+  with DMain.DataMain.OrderDetailsSet do
+    begin
+      Close;
+      CommandText:= 'SELECT * FROM OrderDetails WHERE OrderID Like "%'+SearchTablesEdit.text+'%"';
+      Open;
+    end;
+end;
+
+procedure TTestdatatable.SearchOrdersBtnClick(Sender: TObject);
+begin
+  with DMain.DataMain.OrdersSet do
+    begin
+      Close;
+      CommandText:= 'SELECT * FROM Orders WHERE OrderID Like "%'+SearchTablesEdit.text+'%"';
+      Open;
+    end;
+end;
+
+end.

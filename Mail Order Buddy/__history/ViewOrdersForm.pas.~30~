@@ -1,0 +1,66 @@
+unit ViewOrdersForm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls;
+
+type
+  TViewOrders = class(TForm)
+    OrdersGrid: TDBGrid;
+    HomeBtn: TButton;
+    SearchBtn: TButton;
+    SearchEdit: TEdit;
+    SearchLbl: TLabel;
+    procedure HomeBtnClick(Sender: TObject);
+    procedure SearchBtnClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewOrders: TViewOrders;
+
+implementation
+
+uses Home, DMain;
+
+{$R *.dfm}
+
+Procedure OrdersGridDblClick(Sender: TObject);
+var
+  Row, Order: integer;
+
+begin
+end;
+
+procedure TViewOrders.HomeBtnClick(Sender: TObject);
+begin
+  ViewOrders.Visible := False;
+  HomeForm.Visible := True;
+end;
+
+procedure TViewOrders.SearchBtnClick(Sender: TObject);
+begin
+  with DMain.DataMain.OrdersSet do
+  begin
+    Close; { Data Set must be closed before changing the command text parameter. }
+    CommandText := 'SELECT * FROM Orders WHERE OrderID LIKE "' + SearchEdit.text
+      + '" OR CustomerID LIKE "' + SearchEdit.text + '" OR OrderDate LIKE "' +
+      SearchEdit.text + '"';
+    Open; { Opening the Data Set will run the new Command Text and return the records that meet the query. }
+    if SearchEdit.text = '' then
+    Begin
+      Close;
+      CommandText := 'SELECT * FROM Orders';
+      Open;
+    End;
+  end;
+end;
+
+end.

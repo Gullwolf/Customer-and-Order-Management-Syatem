@@ -1,0 +1,75 @@
+object DataMain: TDataMain
+  OldCreateOrder = False
+  Height = 588
+  Width = 273
+  object MainDataConnect: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=F:\Computer Science' +
+      ' Project\DataBases\Customers2.mdb;Persist Security Info=False'
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 40
+    Top = 16
+  end
+  object CustomerSet: TADODataSet
+    Active = True
+    Connection = MainDataConnect
+    CursorType = ctStatic
+    CommandText = 'select * from Customers'
+    Parameters = <>
+    Left = 128
+    Top = 16
+  end
+  object CustomerSource: TDataSource
+    DataSet = CustomerSet
+    Left = 208
+    Top = 16
+  end
+  object OrdersSet: TADODataSet
+    Active = True
+    Connection = MainDataConnect
+    CursorType = ctStatic
+    CommandText = 'select * from Orders'
+    Parameters = <>
+    Left = 40
+    Top = 72
+  end
+  object OrdersSource: TDataSource
+    DataSet = OrdersSet
+    Left = 128
+    Top = 72
+  end
+  object OrderDetailsSet: TADODataSet
+    Active = True
+    Connection = MainDataConnect
+    CursorType = ctStatic
+    CommandText = 
+      'select OrderID, Discount, OrderDetails.ProductID, Quantity, Unit' +
+      'Price from OrderDetails, Products'#13#10'Where Products.ProductID = Or' +
+      'derDetails.ProductID'
+    Parameters = <>
+    Left = 40
+    Top = 128
+  end
+  object OrderDetailsSource: TDataSource
+    DataSet = OrderDetailsSet
+    Left = 128
+    Top = 128
+  end
+  object ProductsSet: TADODataSet
+    Active = True
+    Connection = MainDataConnect
+    CursorType = ctStatic
+    CommandText = 'select * from Products'
+    Parameters = <>
+    Left = 40
+    Top = 184
+  end
+  object ProductsSource: TDataSource
+    DataSet = ProductsSet
+    Left = 128
+    Top = 184
+  end
+end
