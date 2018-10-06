@@ -6,9 +6,7 @@ object DataMain: TDataMain
     Connected = True
     ConnectionString = 
       'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=C:\Us' +
-      'ers\GeorgeCook\Desktop\New folder\Computer Science Project- afte' +
-      'r project hand in addtitions...if looking for orginal it is on y' +
-      'our memory stick\DataBases\Customers2.mdb;Mode=Share Deny None;P' +
+      'ers\GeorgeCook\Desktop\New folder\Mail Order Buddy\DataBases\Customers2.mdb;Mode=Share Deny None;P' +
       'ersist Security Info=False;Jet OLEDB:System database="";Jet OLED' +
       'B:Registry Path="";Jet OLEDB:Database Password="";Jet OLEDB:Engi' +
       'ne Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLEDB:Global Par' +
